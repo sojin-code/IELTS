@@ -1,0 +1,142 @@
+{
+  "meta": { "startDate": "2026-06-20", "examDate": null, "targetBand": 7.0, "lastUpdated": "2026-06-20" },
+  "phases": [
+    { "weeks": [1, 8],   "name": "기초 공사",    "target": "5.5→6.0" },
+    { "weeks": [9, 16],  "name": "전략 장착",    "target": "6.0→6.5" },
+    { "weeks": [17, 22], "name": "실전 압박",    "target": "6.5→7.0" },
+    { "weeks": [23, 26], "name": "마무리·실전",  "target": "7.0 안정화" }
+  ],
+  "shows": ["Friends", "Gilmore Girls", "2 Broke Girls"],
+  "days": [
+    { "day": 1,
+      "reading": { "title": "The Origins of Tea", "minutes": 20,
+        "passage": "Tea is one of the most widely consumed beverages in the world, second only to water. According to a popular Chinese legend, tea was discovered by accident around 2737 BCE, when leaves from a wild bush blew into a pot of boiling water that the emperor Shen Nong was preparing. Whether or not this story is true, historical records confirm that tea drinking was well established in China long before it reached other parts of the world.\n\nFor many centuries, the secret of how to grow and process tea remained within China. Tea was transported along trade routes to neighbouring regions, and it gradually became a valuable item of exchange. By the time European traders arrived in Asia in the sixteenth century, tea was already deeply woven into the culture of several Asian societies.\n\nThe Portuguese and the Dutch were among the first Europeans to ship tea back to their home countries, where it was initially regarded as an expensive luxury available only to the wealthy. In Britain, tea did not become popular until the seventeenth century, but once it did, demand grew rapidly. The high price encouraged smuggling, and large quantities of tea entered the country illegally to avoid the heavy taxes imposed by the government.\n\nEventually, the British began cultivating tea in India in order to reduce their dependence on Chinese supplies. The plantations established there transformed tea from a rare luxury into an everyday drink that ordinary families could afford. Today, tea is produced in dozens of countries, and each region has developed its own distinctive varieties and traditions of preparation.",
+        "questions": [
+          { "type": "tfng", "q": "Tea is consumed more than any other drink except water.", "a": "TRUE" },
+          { "type": "tfng", "q": "Knowledge of how to grow and process tea stayed within China for many centuries.", "a": "TRUE" },
+          { "type": "tfng", "q": "The Portuguese were the people who first introduced tea to China.", "a": "FALSE" },
+          { "type": "tfng", "q": "Tea became popular in Britain as soon as it first arrived there.", "a": "FALSE" },
+          { "type": "tfng", "q": "Smuggling of tea happened because of the high taxes placed on it.", "a": "TRUE" },
+          { "type": "gap", "q": "The British began growing tea in ________ in order to depend less on Chinese supplies.", "a": ["India"] },
+          { "type": "mcq", "q": "According to the passage, the tea plantations in India led to tea becoming:", "options": ["more expensive than before", "an affordable everyday drink", "illegal in Britain", "less popular over time"], "a": "B" }
+        ] },
+      "listening": { "title": "Joining the City Library", "accent": "en-GB", "rate": 0.95,
+        "script": "WOMAN: Good morning, I'd like to join the city library. What do I need to do?\nMAN: Of course. I'll just take a few details. Can I have your full name?\nWOMAN: Yes, it's Karen Mitchell. That's M-I-T-C-H-E-L-L.\nMAN: Thank you. And your date of birth?\nWOMAN: The twelfth of March, 1995.\nMAN: Lovely. What's your current address?\nWOMAN: It's forty-seven Park Avenue.\nMAN: Now, there are two types of membership. The standard card is free and lets you borrow up to six books for three weeks. The premium card costs fifteen pounds a year and allows you to borrow twelve items, including DVDs.\nWOMAN: I'll take the premium one, please.\nMAN: No problem. The library is open from nine to eight on weekdays, but it closes early at five on Saturdays. We're closed on Sundays.\nWOMAN: Good to know. Thank you so much.",
+        "questions": [
+          { "type": "gap", "q": "Surname: ________", "a": ["Mitchell"] },
+          { "type": "gap", "q": "Date of birth: 12th of ________ 1995", "a": ["March"] },
+          { "type": "gap", "q": "Address: ________ Park Avenue", "a": ["47", "forty-seven", "forty seven"] },
+          { "type": "mcq", "q": "Which membership does the woman choose?", "options": ["the standard card", "the premium card"], "a": "B" },
+          { "type": "gap", "q": "Premium membership costs £________ a year.", "a": ["15", "fifteen"] },
+          { "type": "gap", "q": "On Saturdays the library closes at ________ o'clock.", "a": ["5", "five"] }
+        ] },
+      "speaking": { "part": "p1", "q": "Let's talk about your hometown. Where is it, and what do you like most about living there? Speak for about one to two minutes." },
+      "writing": { "task": "t2", "minWords": 250, "minutes": 40, "q": "Some people believe that children should begin learning a foreign language at primary school, while others think it is better to start in secondary school. Discuss both views and give your own opinion. Write at least 250 words." }
+    },
+    { "day": 2,
+      "reading": { "title": "Urban Green Spaces", "minutes": 20,
+        "passage": "As cities around the world continue to expand, urban planners are paying increasing attention to the role of green spaces such as parks, gardens and tree-lined streets. These areas were once viewed mainly as places for recreation, but research has shown that they provide a far wider range of benefits to city dwellers.\n\nOne of the most significant advantages of urban greenery is its effect on temperature. During hot weather, densely built areas can become noticeably warmer than the surrounding countryside, a phenomenon known as the urban heat island effect. Trees and plants help to cool the air by providing shade and releasing moisture, which can lower local temperatures by several degrees.\n\nGreen spaces also contribute to cleaner air. Vegetation absorbs certain pollutants and traps tiny particles that would otherwise be breathed in by residents. In addition, parks encourage physical activity, as people are more likely to walk, run or cycle when attractive outdoor spaces are available nearby.\n\nThere are psychological benefits too. Studies have repeatedly found that spending time in natural surroundings reduces stress and improves concentration. Some hospitals have even reported that patients with a view of greenery from their windows tend to recover more quickly than those without.\n\nDespite these benefits, creating and maintaining green spaces can be costly, and land in city centres is often extremely valuable. Planners must therefore balance the demand for housing and commercial development against the long-term advantages that parks and gardens bring to a community.",
+        "questions": [
+          { "type": "tfng", "q": "In the past, green spaces were mainly considered places for recreation.", "a": "TRUE" },
+          { "type": "tfng", "q": "The urban heat island effect makes city centres cooler than the surrounding countryside.", "a": "FALSE" },
+          { "type": "tfng", "q": "Plants can reduce local temperatures by providing shade and releasing moisture.", "a": "TRUE" },
+          { "type": "tfng", "q": "All hospitals now include gardens for their patients.", "a": "NOT GIVEN" },
+          { "type": "gap", "q": "Vegetation absorbs pollutants and traps tiny ________ in the air.", "a": ["particles"] },
+          { "type": "gap", "q": "Research shows that time in nature reduces stress and improves ________.", "a": ["concentration"] },
+          { "type": "mcq", "q": "According to the passage, planners must:", "options": ["ban all new housing in cities", "balance development against the benefits of green spaces", "move all parks to the countryside", "reduce the value of city-centre land"], "a": "B" }
+        ] },
+      "listening": { "title": "Student Accommodation Enquiry", "accent": "en-GB", "rate": 0.95,
+        "script": "STUDENT: Hi, I'm looking for accommodation near the university for next term.\nOFFICER: Sure. Are you interested in a hall of residence or a private flat?\nSTUDENT: A hall of residence, I think. It's my first year.\nOFFICER: Good choice. We have two main halls. Riverside Hall is the closest, just five minutes' walk from campus, and a single room there costs ninety pounds a week. Greenfield Hall is a bit further, about twenty minutes away, but it's cheaper at seventy-five pounds a week.\nSTUDENT: Does the price include meals?\nOFFICER: At Riverside, breakfast and dinner are included. Greenfield is self-catered.\nSTUDENT: And is there internet?\nOFFICER: Yes, both halls have free wireless internet in every room.\nSTUDENT: What about laundry?\nOFFICER: There's a laundry room in each building. It costs two pounds per wash.\nSTUDENT: Great. I think I'll go for Riverside Hall.\nOFFICER: Excellent. I'll send you the application form by email today.",
+        "questions": [
+          { "type": "mcq", "q": "What type of accommodation does the student choose?", "options": ["a private flat", "a hall of residence"], "a": "B" },
+          { "type": "gap", "q": "Riverside Hall is ________ minutes' walk from campus.", "a": ["5", "five"] },
+          { "type": "gap", "q": "A single room at Greenfield Hall costs £________ a week.", "a": ["75", "seventy-five"] },
+          { "type": "mcq", "q": "Which meals are included at Riverside Hall?", "options": ["breakfast only", "breakfast and dinner", "all three meals", "no meals"], "a": "B" },
+          { "type": "gap", "q": "Using the laundry costs £________ per wash.", "a": ["2", "two"] },
+          { "type": "gap", "q": "The student finally chooses ________ Hall.", "a": ["Riverside"] }
+        ] },
+      "speaking": { "part": "p2", "q": "Describe a skill you would like to learn. You should say: what the skill is, why you want to learn it, and how you would learn it; and explain how this skill would be useful to you. You have one minute to prepare, then speak for two minutes." },
+      "writing": { "task": "t1", "minWords": 150, "minutes": 20, "q": "The table below shows the percentage of workers who travelled to work by public transport in four cities in 2000 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.\n\nDATA (% using public transport):\n- City A — 2000: 35%, 2020: 52%\n- City B — 2000: 48%, 2020: 45%\n- City C — 2000: 20%, 2020: 38%\n- City D — 2000: 60%, 2020: 66%" }
+    },
+    { "day": 3,
+      "reading": { "title": "The Science of Sleep", "minutes": 20,
+        "passage": "Sleep is something every human being needs, yet for a long time scientists understood very little about why it is so important. Early researchers assumed that sleep was simply a period of rest, during which the body did almost nothing. Modern studies, however, have revealed that the brain remains remarkably active while we sleep.\n\nA typical night's sleep is divided into several cycles, each lasting around ninety minutes. Within each cycle, the brain moves through different stages, including a phase known as REM, or rapid eye movement, sleep. It is during REM sleep that most vivid dreaming occurs. Researchers believe this stage plays an essential part in processing emotions and storing memories from the previous day.\n\nThe amount of sleep a person needs changes with age. Newborn babies may sleep for sixteen hours a day, whereas most adults function best with around seven to eight hours. Regularly getting too little sleep has been linked to a range of problems, including poor concentration, weakened immunity and an increased risk of certain illnesses.\n\nDespite this knowledge, many people in modern societies do not get enough rest. Bright screens, busy schedules and artificial lighting can all interfere with the body's natural sleep patterns. Experts recommend keeping a regular bedtime, avoiding electronic devices before sleep, and ensuring that the bedroom is dark and quiet. Such simple measures, they argue, can greatly improve both the quality and the quantity of sleep that people obtain.",
+        "questions": [
+          { "type": "tfng", "q": "Early researchers believed the body was almost inactive during sleep.", "a": "TRUE" },
+          { "type": "tfng", "q": "Each sleep cycle lasts about ninety minutes.", "a": "TRUE" },
+          { "type": "tfng", "q": "Most vivid dreaming happens outside REM sleep.", "a": "FALSE" },
+          { "type": "gap", "q": "REM sleep is thought to help with processing emotions and storing ________.", "a": ["memories", "memory"] },
+          { "type": "gap", "q": "Most adults function best with around seven to ________ hours of sleep.", "a": ["eight", "8"] },
+          { "type": "tfng", "q": "Everyone in modern societies gets enough sleep.", "a": "FALSE" },
+          { "type": "mcq", "q": "Which of the following is NOT recommended by experts?", "options": ["keeping a regular bedtime", "using electronic devices just before sleep", "keeping the bedroom dark", "keeping the bedroom quiet"], "a": "B" }
+        ] },
+      "listening": { "title": "Lecture: How Volcanoes Form", "accent": "en-AU", "rate": 0.95,
+        "script": "Good afternoon, everyone. Today we're going to look at volcanoes and how they form. A volcano is essentially an opening in the Earth's surface through which molten rock, gases and ash can escape. Beneath the surface, this molten rock is called magma, but once it reaches the surface and flows out, we refer to it as lava.\n\nMost volcanoes are found along the edges of the giant plates that make up the Earth's outer layer. There are roughly fifteen hundred active volcanoes in the world today, and a large number of these are located around the Pacific Ocean, in a region often called the Ring of Fire.\n\nVolcanic eruptions can be extremely destructive, burying entire towns and affecting the climate for months. However, they also bring benefits. Volcanic soil is exceptionally fertile, which is why many farming communities choose to live nearby despite the risks.",
+        "questions": [
+          { "type": "gap", "q": "Molten rock beneath the Earth's surface is called ________.", "a": ["magma"] },
+          { "type": "gap", "q": "When molten rock flows out onto the surface it is called ________.", "a": ["lava"] },
+          { "type": "gap", "q": "There are roughly ________ active volcanoes in the world today.", "a": ["1500", "fifteen hundred", "1,500"] },
+          { "type": "gap", "q": "Many Pacific volcanoes lie in a region called the Ring of ________.", "a": ["Fire"] },
+          { "type": "mcq", "q": "Why do many farming communities live near volcanoes?", "options": ["the soil is very fertile", "the climate is much cooler", "eruptions never happen there", "the land costs nothing"], "a": "A" },
+          { "type": "tfng", "q": "The lecturer says volcanic eruptions bring no benefits at all.", "a": "FALSE" }
+        ] },
+      "speaking": { "part": "p3", "q": "We've been talking about technology. Some people say modern technology has made everyday life too complicated. To what extent do you agree, and how do you think people can manage technology in a healthier way? Develop your answer with reasons and examples." },
+      "writing": { "task": "t2", "minWords": 250, "minutes": 40, "q": "In many countries, the number of people choosing to live alone is increasing. What do you think are the causes of this trend, and what effects does it have on society? Write at least 250 words." }
+    },
+    { "day": 4,
+      "reading": { "title": "Honeybees and Pollination", "minutes": 20,
+        "passage": "Honeybees are among the most important insects on the planet, not because of the honey they produce, but because of the vital role they play in pollination. Pollination is the process by which pollen is transferred from one flower to another, allowing plants to produce seeds and fruit. As bees move from flower to flower collecting nectar, pollen sticks to their bodies and is carried along with them.\n\nIt is estimated that a significant proportion of the crops grown for human consumption depend, at least in part, on pollination by insects. Without bees and other pollinators, many fruits, vegetables and nuts would become far more difficult and expensive to produce. For this reason, the health of bee populations is closely linked to global food security.\n\nIn recent decades, however, beekeepers in many countries have reported alarming declines in the number of bees. Scientists have identified several possible causes, including the use of certain pesticides, the loss of wild flowers, the spread of diseases and the effects of a changing climate. It is likely that these factors act in combination rather than alone.\n\nEfforts to protect bees are now under way in many regions. Some governments have restricted the use of harmful chemicals, while individuals are being encouraged to plant flowers that provide food for pollinators. Researchers stress that protecting bees is not simply a matter of preserving a single species, but of safeguarding the complex natural systems on which human life ultimately depends.",
+        "questions": [
+          { "type": "tfng", "q": "Honeybees are important mainly because of the honey they make.", "a": "FALSE" },
+          { "type": "gap", "q": "Pollination allows plants to produce seeds and ________.", "a": ["fruit"] },
+          { "type": "tfng", "q": "Many crops grown for human food depend partly on insect pollination.", "a": "TRUE" },
+          { "type": "tfng", "q": "Scientists are certain that one single factor is responsible for the decline in bees.", "a": "FALSE" },
+          { "type": "mcq", "q": "Which of the following is mentioned as a possible cause of bee decline?", "options": ["too much rainfall", "the use of certain pesticides", "the overproduction of honey", "a shortage of beekeepers"], "a": "B" },
+          { "type": "gap", "q": "Individuals are encouraged to plant ________ that provide food for pollinators.", "a": ["flowers"] },
+          { "type": "tfng", "q": "Some governments have restricted the use of harmful chemicals.", "a": "TRUE" }
+        ] },
+      "listening": { "title": "Booking a Guided Tour", "accent": "en-GB", "rate": 0.95,
+        "script": "AGENT: Good morning, City Tours, how can I help you?\nCUSTOMER: Hi, I'd like to book a guided walking tour of the old town for this weekend.\nAGENT: Certainly. We run tours on both Saturday and Sunday. Which day would you prefer?\nCUSTOMER: Saturday, please.\nAGENT: We have two times on Saturday, one at ten in the morning and one at two in the afternoon.\nCUSTOMER: The morning one sounds good.\nAGENT: Great. The tour lasts about two hours and the meeting point is in front of the Town Hall. How many people will be coming?\nCUSTOMER: There'll be four of us, two adults and two children.\nAGENT: The price is twelve pounds for adults and six pounds for children, so that comes to thirty-six pounds in total.\nCUSTOMER: That's fine. Is there anything we should bring?\nAGENT: I'd recommend comfortable shoes and a bottle of water. And please arrive ten minutes early.\nCUSTOMER: Will do. Thank you very much.",
+        "questions": [
+          { "type": "mcq", "q": "Which day does the customer book the tour for?", "options": ["Saturday", "Sunday"], "a": "A" },
+          { "type": "gap", "q": "The morning tour starts at ________ o'clock.", "a": ["10", "ten"] },
+          { "type": "gap", "q": "The tour lasts about ________ hours.", "a": ["2", "two"] },
+          { "type": "gap", "q": "The meeting point is in front of the ________ Hall.", "a": ["Town"] },
+          { "type": "gap", "q": "The total price for the whole group is £________.", "a": ["36", "thirty-six"] },
+          { "type": "gap", "q": "Customers are asked to arrive ________ minutes early.", "a": ["10", "ten"] }
+        ] },
+      "speaking": { "part": "p1", "q": "Let's talk about food. What kinds of food do you enjoy eating, and do you prefer cooking at home or eating out? Explain why." },
+      "writing": { "task": "t1", "minWords": 150, "minutes": 20, "q": "The chart below shows the number of visitors (in thousands) to a national museum across four seasons in two different years, 2015 and 2022. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.\n\nDATA (visitors, in thousands):\n- Spring — 2015: 40, 2022: 55\n- Summer — 2015: 70, 2022: 90\n- Autumn — 2015: 35, 2022: 50\n- Winter — 2015: 25, 2022: 30" }
+    },
+    { "day": 5,
+      "reading": { "title": "The History of Lighthouses", "minutes": 20,
+        "passage": "For thousands of years, sailors have relied on lights along the coast to guide them safely to harbour and to warn them of dangerous rocks. The earliest lighthouses were little more than open fires built on hilltops, but over time they developed into the tall, purpose-built towers that we recognise today.\n\nOne of the most famous structures of the ancient world was the lighthouse of Alexandria, in Egypt, which was completed more than two thousand years ago. Standing at a remarkable height, it was considered an extraordinary feat of engineering and remained in use for many centuries before it was eventually destroyed by earthquakes.\n\nFor most of their history, lighthouses depended on fire or oil lamps for their light. The major challenge was making the light visible from a great distance. This problem was largely solved in the early nineteenth century with the invention of a special lens that could focus a beam of light far out to sea. This invention dramatically improved the effectiveness of lighthouses around the world.\n\nTraditionally, each lighthouse was operated by a keeper, who lived on site and was responsible for maintaining the light through the night. The work could be lonely and demanding, particularly in remote locations. In the twentieth century, however, advances in technology made it possible to operate lighthouses automatically. As a result, the role of the lighthouse keeper has now almost entirely disappeared, although the structures themselves continue to play an important part in keeping sailors safe.",
+        "questions": [
+          { "type": "tfng", "q": "The earliest lighthouses were tall, purpose-built towers.", "a": "FALSE" },
+          { "type": "gap", "q": "The famous ancient lighthouse was located in ________, in Egypt.", "a": ["Alexandria"] },
+          { "type": "tfng", "q": "The lighthouse of Alexandria was eventually destroyed by earthquakes.", "a": "TRUE" },
+          { "type": "gap", "q": "A special ________ invented in the early nineteenth century could focus a beam of light far out to sea.", "a": ["lens"] },
+          { "type": "mcq", "q": "What was the main challenge for early lighthouses?", "options": ["finding enough keepers", "making the light visible from a great distance", "building them quickly", "protecting them from sailors"], "a": "B" },
+          { "type": "tfng", "q": "Lighthouse keepers remain essential to operating lighthouses today.", "a": "FALSE" },
+          { "type": "gap", "q": "In the twentieth century, technology made it possible to operate lighthouses ________.", "a": ["automatically"] }
+        ] },
+      "listening": { "title": "Lecture: Techniques for Improving Memory", "accent": "en-US", "rate": 0.95,
+        "script": "Hello everyone. In today's session, I want to share a few practical techniques for improving your memory. The first technique is called chunking. This simply means breaking a long piece of information, such as a phone number, into smaller groups so that it is easier to remember.\n\nThe second technique involves using visual images. Our brains are very good at remembering pictures, so if you connect a piece of information to a strong mental image, you are far more likely to recall it later.\n\nFinally, there is the power of repetition, but with a twist. Rather than reviewing material many times in a single session, it is much more effective to spread your review over several days. This method, known as spaced repetition, helps move information into your long-term memory. If you apply these three techniques regularly, you should notice a real improvement within a few weeks.",
+        "questions": [
+          { "type": "gap", "q": "The first memory technique is called ________.", "a": ["chunking"] },
+          { "type": "gap", "q": "Chunking means breaking information into smaller ________.", "a": ["groups"] },
+          { "type": "mcq", "q": "Why does the speaker say visual images help memory?", "options": ["because brains are good at remembering pictures", "because images are easy to draw", "because pictures are colourful", "because names are boring"], "a": "A" },
+          { "type": "gap", "q": "Spreading your review over several days is known as ________ repetition.", "a": ["spaced"] },
+          { "type": "tfng", "q": "The speaker recommends reviewing all material in one single session.", "a": "FALSE" },
+          { "type": "gap", "q": "With regular practice, improvement should appear within a few ________.", "a": ["weeks"] }
+        ] },
+      "speaking": { "part": "p2", "q": "Describe a memorable journey you have taken. You should say: where you went, who you went with, and what you did during the journey; and explain why it was so memorable. You have one minute to prepare, then speak for two minutes." },
+      "writing": { "task": "t2", "minWords": 250, "minutes": 40, "q": "Some people think that governments should spend money on public services such as health and education rather than on the arts, such as music and theatre. To what extent do you agree or disagree? Write at least 250 words." }
+    }
+  ],
+  "pools": {
+    "p1": ["Where are you from and what do you like about your hometown?", "Do you work or study? What do you enjoy most about it?", "What do you usually do in your free time?", "How often do you use the internet, and what for?"],
+    "p2": ["Describe a person who has influenced you.", "Describe a place you found interesting.", "Describe an object that is important to you."],
+    "p3": ["How has social media changed the way people communicate?", "What responsibilities do individuals have in protecting the environment?", "Does your country's education system prepare young people well for adult life?"]
+  }
+}
