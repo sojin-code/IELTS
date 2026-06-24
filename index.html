@@ -176,6 +176,7 @@
 
   <!-- TODAY -->
   <section class="page on" id="page-today">
+    <div id="dashboard"></div>
     <div class="metrics" id="home-metrics"></div>
     <div class="card">
       <h3 id="today-title">오늘의 DAY</h3>
@@ -474,11 +475,12 @@ function allContentDone(){
   return n===total && dayComplete(n) && DB.days[n].completedDate && DB.days[n].completedDate<today();
 }
 
+const PLAN_DAYS=180;
 function courseInfo(){
   const day = activeDay();
   const week = Math.max(1, Math.ceil(day/7));
   const phase = (CONTENT.phases||[]).find(p=>week>=p.weeks[0]&&week<=p.weeks[1]) || (CONTENT.phases||[]).slice(-1)[0];
-  const pct = Math.min(100, Math.round(day/182*100));
+  const pct = Math.min(100, Math.round(day/PLAN_DAYS*100));
   return {day, week, phase, pct};
 }
 
@@ -490,6 +492,7 @@ const PARTS=[
   {key:"writing",  label:"Writing",  badge:"b-write",  ico:"✍️", page:"writing"}
 ];
 function renderToday(){
+  renderDashboard();
   const n=activeDay(); const data=dayData(n); const rec=dayRec(n);
   document.getElementById('today-title').textContent = `DAY ${n} · 오늘의 과제`;
   const tt=document.getElementById('today-tasks'); const bn=document.getElementById('today-banner');
@@ -916,6 +919,83 @@ function renderJournal(){
     <span style="color:var(--accent);font-weight:600">${j.hours}h</span></div>
     <div class="body"><span class="chip">${j.act}</span>${j.note?`<div style="font-size:13px;margin-top:4px">${j.note}</div>`:''}</div>
     <button class="btn danger" onclick="DB.journal.splice(${i},1);save();renderJournal();renderMetrics()">✕</button></div>`).join('');
+}
+
+/* ===================== 대시보드(랜딩) ===================== */
+function ymd(d){ return d.toLocaleDateString('en-CA'); }
+function todayDate(){ const t=today().split('-').map(Number); return new Date(t[0], t[1]-1, t[2]); }
+function studyStreak(){
+  const dates=new Set();
+  Object.values(DB.days).forEach(d=>{ if(d.completedDate) dates.add(d.completedDate); });
+  DB.journal.forEach(j=>{ if(j.date) dates.add(j.date); });
+  let streak=0, cur=todayDate();
+  if(!dates.has(ymd(cur))){ cur.setDate(cur.getDate()-1); if(!dates.has(ymd(cur))) return 0; }
+  while(dates.has(ymd(cur))){ streak++; cur.setDate(cur.getDate()-1); }
+  return streak;
+}
+function last14Hours(){
+  const map={}; DB.journal.forEach(j=>{ map[j.date]=(map[j.date]||0)+(j.hours||0); });
+  const arr=[]; const base=todayDate();
+  for(let i=13;i>=0;i--){ const dd=new Date(base); dd.setDate(base.getDate()-i); const k=ymd(dd); arr.push({k,h:map[k]||0}); }
+  return arr;
+}
+function bandSparkSVG(){
+  const pts=DB.scores.map(avgBand).filter(v=>v!=null);
+  if(pts.length<2) return '';
+  const W=120,H=34,pad=4,minB=Math.min(...pts)-0.3,maxB=Math.max(...pts)+0.3,rng=(maxB-minB)||1;
+  const x=i=>pad+i/(pts.length-1)*(W-2*pad);
+  const y=v=>H-pad-(v-minB)/rng*(H-2*pad);
+  const d=pts.map((v,i)=>`${i?'L':'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const dots=pts.map((v,i)=>`<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2" fill="var(--accent)"/>`).join('');
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block"><path d="${d}" fill="none" stroke="var(--accent)" stroke-width="2"/>${dots}</svg>`;
+}
+function renderDashboard(){
+  const el=document.getElementById('dashboard'); if(!el) return;
+  const ci=courseInfo();
+  const doneDays=Object.values(DB.days).filter(d=>d.reading&&d.listening&&d.speaking&&d.writing).length;
+  const pct=Math.round(doneDays/PLAN_DAYS*100);
+  const streak=studyStreak();
+  const bands=DB.scores.map(avgBand).filter(v=>v!=null);
+  const first=bands.length?bands[0]:null, latest=bands.length?bands[bands.length-1]:null;
+  const delta=(first!=null&&latest!=null)?(latest-first):null;
+  const deltaStr = delta==null?'' : (delta>0?`▲ +${delta.toFixed(1)}`:(delta<0?`▼ ${delta.toFixed(1)}`:'– 0.0'));
+  const deltaColor = delta==null?'var(--faint)':(delta>0?'var(--ok)':(delta<0?'var(--danger)':'var(--muted)'));
+  const tgt=(CONTENT.meta&&CONTENT.meta.targetBand)||7.0;
+  const trend=last14Hours(); const maxH=Math.max(1,...trend.map(t=>t.h)); const todayK=ymd(todayDate());
+  const bars=trend.map(t=>{ const hgt=Math.round(t.h/maxH*28);
+    return `<div title="${t.k}: ${t.h}h" style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:32px">
+      <div style="height:${hgt}px;background:${t.k===todayK?'var(--accent)':'var(--accent-soft)'};border-radius:3px 3px 0 0;min-height:${t.h>0?'3px':'0'}"></div></div>`;}).join('');
+  el.innerHTML = `
+   <div class="card" style="background:linear-gradient(135deg,var(--accent-soft),var(--surface))">
+     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+       <div>
+         <div style="font-size:18px;font-weight:700">안녕하세요, 소진님 👋</div>
+         <div style="font-size:13px;color:var(--muted);margin-top:2px">오늘은 <b>DAY ${ci.day}</b> · ${ci.phase?ci.phase.name:''} · 목표 밴드 ${tgt}</div>
+       </div>
+       <div style="text-align:center;flex:0 0 auto">
+         <div style="font-size:22px;font-weight:800;color:var(--accent)">🔥 ${streak}</div>
+         <div style="font-size:10px;color:var(--muted)">연속 학습일</div>
+       </div>
+     </div>
+     <div style="margin-top:14px">
+       <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px">
+         <span>6개월 플랜 진행률</span><span><b style="color:var(--text)">${doneDays}</b> / ${PLAN_DAYS}일 (${pct}%) · D-${Math.max(0,PLAN_DAYS-doneDays)}</span>
+       </div>
+       <div class="progress-track" style="margin-top:0"><div class="progress-bar" style="width:${pct}%"></div></div>
+     </div>
+     <div style="margin-top:14px">
+       <div style="font-size:11px;color:var(--muted)">밴드 상승 추이</div>
+       ${bands.length>=2
+         ? `<div style="display:flex;align-items:center;gap:10px;margin-top:4px">${bandSparkSVG()}
+            <div><div style="font-size:15px;font-weight:700">${first.toFixed(1)} → ${latest.toFixed(1)}</div>
+            <div style="font-size:12px;font-weight:700;color:${deltaColor}">${deltaStr}</div></div></div>`
+         : `<div style="font-size:13px;color:var(--faint);margin-top:6px">진도 탭에서 점수를 2회 이상 기록하면 상승 추이가 여기 표시돼요${latest!=null?` (현재 ${latest.toFixed(1)})`:''}.</div>`}
+     </div>
+     <div style="margin-top:14px">
+       <div style="font-size:11px;color:var(--muted);margin-bottom:4px">최근 2주 학습량 (일지 시간 기준)</div>
+       <div style="display:flex;gap:2px;align-items:flex-end">${bars}</div>
+     </div>
+   </div>`;
 }
 
 /* ===================== 메트릭 ===================== */
