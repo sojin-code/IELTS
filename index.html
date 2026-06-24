@@ -153,13 +153,45 @@
   .crit span{font-size:13px;min-width:78px}
   .crit select{width:auto;flex:1}
   canvas{width:100%;height:160px;display:block}
+  /* 로그인 모달 */
+  .auth-overlay{position:fixed;inset:0;background:rgba(20,18,16,.55);display:none;align-items:center;
+    justify-content:center;z-index:100;padding:20px}
+  .auth-overlay.show{display:flex}
+  .auth-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;
+    width:100%;max-width:360px;padding:28px 24px 22px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45)}
+  .auth-card h2{font-size:22px;font-weight:700;text-align:center;margin-bottom:4px}
+  .auth-card .asub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:18px}
+  .auth-card label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:12px 0 5px}
+  .auth-card input{width:100%;padding:12px 13px;font-size:15px;border:1px solid var(--border);
+    border-radius:11px;background:var(--bg);color:var(--text);font-family:inherit}
+  .auth-card input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .auth-card .ago{width:100%;margin-top:18px;padding:13px;font-size:15px;font-weight:700;color:#fff;
+    border:none;border-radius:11px;cursor:pointer;background:var(--accent);font-family:inherit}
+  .auth-card .ago:disabled{opacity:.55;cursor:default}
+  .auth-toggle{text-align:center;margin-top:14px;font-size:13px;color:var(--muted)}
+  .auth-toggle button{background:none;border:none;cursor:pointer;font:inherit;color:var(--accent);font-weight:700;padding:0}
+  .auth-msg{margin-top:12px;font-size:13px;text-align:center;min-height:18px;line-height:1.5}
+  .auth-msg.error{color:var(--danger)}
+  .auth-msg.ok{color:var(--accent)}
+  .auth-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;
+    color:var(--faint);cursor:pointer;line-height:1}
+  .auth-consent{font-size:11px;color:var(--faint);line-height:1.5;margin-top:14px;display:flex;gap:7px;align-items:flex-start}
+  .auth-consent input{width:auto;margin-top:2px}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
 </head>
 <body>
 <div class="wrap">
   <header>
     <div class="title">IELTS 6개월 마스터플랜</div>
     <div class="phase" id="phase-label">로딩 중…</div>
+    <div style="margin-top:8px"><select id="level-select" onchange="setLevel(this.value)" style="width:auto;font-size:13px;padding:5px 9px;border-radius:8px">
+      <option value="l1">레벨 1 · 밴드 5.5 → 6.0</option>
+      <option value="l2">레벨 2 · 밴드 6.0 → 6.5</option>
+      <option value="l3">레벨 3 · 밴드 6.5 → 7.0</option>
+    </select></div>
+    <div id="auth-bar" style="margin-top:8px;font-size:13px"></div>
     <div class="progress-track"><div class="progress-bar" id="course-bar" style="width:0%"></div></div>
   </header>
 
@@ -172,6 +204,7 @@
     <button data-page="progress">진도</button>
     <button data-page="vocab">표현</button>
     <button data-page="journal">일지</button>
+    <button data-page="admin" id="nav-admin" style="display:none">관리자</button>
   </nav>
 
   <!-- TODAY -->
@@ -388,6 +421,15 @@
       </div>
     </div>
   </section>
+
+  <!-- ADMIN -->
+  <section class="page" id="page-admin">
+    <div class="card">
+      <h3>관리자 — 사용자 진도 &amp; 일지</h3>
+      <div class="note" style="margin-top:0">가입한 사용자들의 레벨별 진도와 일지 메모를 봅니다. (RLS상 읽기 전용)</div>
+      <div id="admin-body" style="margin-top:10px"><div class="empty">불러오는 중…</div></div>
+    </div>
+  </section>
 </div>
 
 <script>
@@ -425,24 +467,39 @@ const FALLBACK = {
 
 /* ===================== 상태 ===================== */
 let CONTENT = FALLBACK;
-const KEY = "ielts_app_v2";
+let LEVEL = localStorage.getItem('ielts_level') || 'l1';
+let KEY = "ielts_app_v2_" + LEVEL;
 let DB = load();
 let rec=null, recording=false, finalText="", startTime=0, timerInt=null;
 
 function blank(){ return { scores:[], journal:[], vocab:[], speak:[], days:{}, results:[], drafts:{} }; }
 function load(){ try{ const p=JSON.parse(localStorage.getItem(KEY)); return p?Object.assign(blank(),p):blank(); }catch(e){ return blank(); } }
-function save(){ localStorage.setItem(KEY, JSON.stringify(DB)); }
+function save(){ DB._updatedAt = Date.now(); localStorage.setItem(KEY, JSON.stringify(DB)); schedulePush(); }
+function save0(){ localStorage.setItem(KEY, JSON.stringify(DB)); }
 function today(){ return new Date().toLocaleDateString('en-CA'); } // YYYY-MM-DD local
 function daySeed(){ return Math.floor(Date.parse(today())/86400000); }
 function pickSeeded(arr){ if(!arr||!arr.length) return null; return arr[daySeed()%arr.length]; }
 
 /* ===================== 콘텐츠 로드 ===================== */
 async function loadContent(){
-  try{
-    const r = await fetch('content.json?t='+Date.now(), {cache:'no-store'});
-    if(r.ok){ const j = await r.json(); CONTENT = Object.assign({}, FALLBACK, j); }
-  }catch(e){ /* file:// 이거나 없으면 FALLBACK 사용 */ }
+  CONTENT = FALLBACK;
+  for(const f of ['content.'+LEVEL+'.json', 'content.json']){
+    try{
+      const r = await fetch(f+'?t='+Date.now(), {cache:'no-store'});
+      if(r.ok){ CONTENT = Object.assign({}, FALLBACK, await r.json()); break; }
+    }catch(e){}
+  }
   boot();
+}
+function setLevel(lv){
+  if(lv===LEVEL) return;
+  save();
+  LEVEL=lv; localStorage.setItem('ielts_level', lv); KEY="ielts_app_v2_"+LEVEL;
+  DB=load();
+  readBuilt=false; lisBuilt=false;   // 레벨 바뀌면 리딩/리스닝 다시 그리도록(같은 DAY여도 콘텐츠가 다름)
+  loadContent();
+  if(SB && SESSION){ pullState(); supaSetCurrentLevel(lv); }
+  go('today');
 }
 
 /* ===================== DAY 진행/잠금 ===================== */
@@ -969,7 +1026,7 @@ function renderDashboard(){
    <div class="card" style="background:linear-gradient(135deg,var(--accent-soft),var(--surface))">
      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
        <div>
-         <div style="font-size:18px;font-weight:700">안녕하세요, 소진님 👋</div>
+         <div style="font-size:18px;font-weight:700">${greetName()} 👋</div>
          <div style="font-size:13px;color:var(--muted);margin-top:2px">오늘은 <b>DAY ${ci.day}</b> · ${ci.phase?ci.phase.name:''} · 목표 밴드 ${tgt}</div>
        </div>
        <div style="text-align:center;flex:0 0 auto">
@@ -1047,6 +1104,7 @@ function go(page){
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
   const el=document.getElementById('page-'+page); if(el) el.classList.add('on');
   if(page==='today') renderToday();
+  if(page==='admin') renderAdmin();
   if(page==='reading') renderReading();
   if(page==='listening') renderListening();
   if(page==='speak') renderSpeakingDay();
@@ -1063,11 +1121,172 @@ function boot(){
   const ci=courseInfo();
   document.getElementById('phase-label').textContent=`DAY ${ci.day} · ${ci.week}주차 · ${ci.phase?ci.phase.name:''} (${ci.phase?ci.phase.target:''})`;
   document.getElementById('course-bar').style.width=ci.pct+'%';
+  const ls=document.getElementById('level-select'); if(ls) ls.value=LEVEL;
   document.getElementById('sc-date').value=today();
   document.getElementById('j-date').value=today();
   fillBands(); setupSpeech(); bootRender();
 }
+
+/* ===================== Supabase 로그인 & 동기화 ===================== */
+let SB=null, SESSION=null, PROFILE=null, pushTimer=null;
+function supaReady(){
+  if(SB) return true;
+  const c = window.SUPABASE_CONFIG;
+  if(window.supabase && c && c.url && c.anonKey && c.anonKey.indexOf('붙여넣')<0){
+    try{ SB = window.supabase.createClient(c.url, c.anonKey); return true; }catch(e){ return false; }
+  }
+  return false;
+}
+function greetName(){
+  try{
+    if(typeof SESSION!=='undefined' && SESSION && SESSION.user){
+      const nm=(PROFILE&&PROFILE.display_name)||SESSION.user.email.split('@')[0];
+      return '안녕하세요, '+nm+'님';
+    }
+  }catch(e){}
+  return '안녕하세요';
+}
+function renderAuthBar(){
+  const na=document.getElementById('nav-admin'); if(na) na.style.display=(PROFILE&&PROFILE.is_admin)?'inline-block':'none';
+  try{ renderDashboard(); }catch(e){}
+  const el=document.getElementById('auth-bar'); if(!el) return;
+  if(!supaReady()){ el.innerHTML='<span style="color:var(--faint)">로컬 모드</span>'; return; }
+  if(SESSION && SESSION.user){
+    el.innerHTML = `<span style="color:var(--muted)">${SESSION.user.email} · 동기화됨</span> · <a href="#" onclick="supaSignOut();return false">로그아웃</a>`
+      + (PROFILE && PROFILE.is_admin ? ` · <a href="#" onclick="go('admin');return false">관리자</a>` : '');
+  } else {
+    el.innerHTML = `<a href="#" onclick="openLogin();return false">로그인 / 가입</a> <span style="color:var(--faint)">· 기기 간 동기화</span>`;
+  }
+}
+let AUTH_MODE='login';
+function authMsg(t,cls){ const m=document.getElementById('auth-msg'); if(m){ m.textContent=t||''; m.className='auth-msg '+(cls||''); } }
+function openLogin(){
+  if(!supaReady()){ alert('config.js에 Supabase 키가 설정되지 않았습니다.'); return; }
+  AUTH_MODE='login'; applyAuthMode(); authMsg('');
+  document.getElementById('auth-overlay').classList.add('show');
+  setTimeout(()=>{ const e=document.getElementById('auth-email'); if(e) e.focus(); },50);
+}
+function closeLogin(){ document.getElementById('auth-overlay').classList.remove('show'); }
+function applyAuthMode(){
+  const signup = AUTH_MODE==='signup';
+  document.getElementById('auth-title').textContent = signup ? '여기서 시작해요' : '다시 만나서 반가워요';
+  document.getElementById('auth-sub').textContent = signup ? '이메일과 비밀번호로 계정을 만드세요' : '이메일과 비밀번호로 로그인하세요';
+  document.getElementById('auth-go').textContent = signup ? '회원가입' : '로그인';
+  document.getElementById('auth-toggle').innerHTML = signup
+    ? '이미 계정이 있으세요? <button onclick="toggleAuthMode()">로그인</button>'
+    : '처음이세요? <button onclick="toggleAuthMode()">회원가입</button>';
+  document.getElementById('auth-consent-row').style.display = signup ? 'flex' : 'none';
+  document.getElementById('auth-pw').setAttribute('autocomplete', signup ? 'new-password' : 'current-password');
+}
+function toggleAuthMode(){ AUTH_MODE = AUTH_MODE==='login' ? 'signup' : 'login'; authMsg(''); applyAuthMode(); }
+function authErr(m){
+  if(/Invalid login credentials/i.test(m)) return '이메일 또는 비밀번호가 맞지 않아요.';
+  if(/already registered|already been registered/i.test(m)) return '이미 가입된 이메일이에요. 로그인해 주세요.';
+  if(/at least 6|password should be/i.test(m)) return '비밀번호는 6자 이상이어야 해요.';
+  if(/valid email|invalid format/i.test(m)) return '이메일 형식을 확인해 주세요.';
+  if(/Email not confirmed/i.test(m)) return '메일함의 확인 링크를 먼저 눌러주세요.';
+  return m;
+}
+async function submitAuth(){
+  if(!supaReady()) return;
+  const email=document.getElementById('auth-email').value.trim();
+  const pw=document.getElementById('auth-pw').value;
+  if(!email||!pw){ authMsg('이메일과 비밀번호를 모두 입력해 주세요.','error'); return; }
+  if(AUTH_MODE==='signup' && !document.getElementById('auth-consent').checked){
+    authMsg('개인정보 동의에 체크해 주세요.','error'); return; }
+  const btn=document.getElementById('auth-go'); btn.disabled=true; authMsg('잠시만요…');
+  try{
+    if(AUTH_MODE==='signup'){
+      const {data,error}=await SB.auth.signUp({email,password:pw});
+      if(error) throw error;
+      if(data.session){ closeLogin(); }   // 이메일 확인 꺼져 있으면 바로 로그인
+      else authMsg('확인 메일을 보냈어요. 메일함의 링크를 누른 뒤 로그인해 주세요 ✉️','ok');
+    } else {
+      const {error}=await SB.auth.signInWithPassword({email,password:pw});
+      if(error) throw error;
+      closeLogin();
+    }
+  }catch(err){ authMsg(authErr(err&&err.message||String(err)),'error'); }
+  finally{ btn.disabled=false; }
+}
+function supaSignOut(){ if(SB) SB.auth.signOut(); SESSION=null; PROFILE=null; renderAuthBar(); }
+async function loadProfile(){
+  if(!SB||!SESSION) return;
+  try{ const {data}=await SB.from('profiles').select('*').eq('id',SESSION.user.id).maybeSingle(); PROFILE=data||null; }catch(e){ PROFILE=null; }
+  renderAuthBar();
+}
+function schedulePush(){ if(!SB||!SESSION) return; clearTimeout(pushTimer); pushTimer=setTimeout(pushState,1500); }
+async function pushState(){
+  if(!SB||!SESSION) return;
+  try{ await SB.from('user_state').upsert({ user_id:SESSION.user.id, level:LEVEL, state:DB, updated_at:new Date().toISOString() }, { onConflict:'user_id,level' }); }catch(e){}
+}
+async function pullState(){
+  if(!SB||!SESSION) return;
+  try{
+    const {data}=await SB.from('user_state').select('state').eq('user_id',SESSION.user.id).eq('level',LEVEL).maybeSingle();
+    if(data && data.state){
+      const remote=data.state, rT=remote._updatedAt||0, lT=DB._updatedAt||0;
+      if(rT>=lT){ DB=Object.assign(blank(), remote); save0(); bootRender(); }
+      else { pushState(); }
+    } else { pushState(); }
+  }catch(e){}
+}
+async function supaSetCurrentLevel(lv){ if(!SB||!SESSION) return; try{ await SB.from('profiles').update({current_level:lv}).eq('id',SESSION.user.id); }catch(e){} }
+async function renderAdmin(){
+  const el=document.getElementById('admin-body'); if(!el) return;
+  if(!SB||!SESSION||!(PROFILE&&PROFILE.is_admin)){ el.innerHTML='<div class="empty">관리자만 볼 수 있습니다.</div>'; return; }
+  el.innerHTML='<div class="empty">불러오는 중…</div>';
+  try{
+    const {data:profiles}=await SB.from('profiles').select('id,email,display_name,current_level,created_at');
+    const {data:states}=await SB.from('user_state').select('user_id,level,state');
+    const byUser={};
+    (states||[]).forEach(s=>{ (byUser[s.user_id]=byUser[s.user_id]||[]).push(s); });
+    if(!profiles||!profiles.length){ el.innerHTML='<div class="empty">아직 가입한 사용자가 없습니다.</div>'; return; }
+    el.innerHTML = profiles.map(p=>{
+      const sts=(byUser[p.id]||[]).sort((a,b)=>a.level.localeCompare(b.level));
+      const rows = sts.map(s=>{
+        const st=s.state||{};
+        const days=st.days?Object.values(st.days).filter(d=>d.reading&&d.listening&&d.speaking&&d.writing).length:0;
+        const scores=(st.scores||[]).map(avgBand).filter(v=>v!=null);
+        const band=scores.length?scores[scores.length-1].toFixed(1):'–';
+        const js=(st.journal||[]).slice(0,6).map(j=>`<div style="font-size:12px;color:var(--muted)">· ${j.date} [${j.act}] ${j.note?String(j.note).replace(/[<>]/g,''):''}</div>`).join('')||'<div style="font-size:12px;color:var(--faint)">일지 없음</div>';
+        return `<div style="margin:6px 0;padding:8px;background:var(--bg);border-radius:8px">
+          <div style="font-size:13px"><b>${s.level.toUpperCase()}</b> · 완료 ${days}일 · 최근 밴드 ${band}</div>${js}</div>`;
+      }).join('') || '<div style="font-size:12px;color:var(--faint)">학습 데이터 없음</div>';
+      return `<div class="card" style="margin-bottom:10px">
+        <div style="font-weight:600">${p.display_name||p.email||p.id}</div>
+        <div style="font-size:12px;color:var(--muted)">${p.email||''} · 현재 ${(p.current_level||'l1').toUpperCase()}</div>
+        ${rows}</div>`;
+    }).join('');
+  }catch(e){ el.innerHTML='<div class="empty">불러오기 오류: '+(e&&e.message||e)+'</div>'; }
+}
+function initAuth(){
+  if(!supaReady()){ renderAuthBar(); return; }
+  SB.auth.getSession().then(({data})=>{ SESSION=(data&&data.session)||null; renderAuthBar(); if(SESSION){ loadProfile(); pullState(); } });
+  SB.auth.onAuthStateChange((_e,s)=>{ SESSION=s||null; renderAuthBar(); if(SESSION){ loadProfile(); pullState(); } });
+}
 loadContent();
+initAuth();
 </script>
+
+<!-- 로그인 / 회원가입 모달 -->
+<div class="auth-overlay" id="auth-overlay">
+  <div class="auth-card" style="position:relative">
+    <button class="auth-close" onclick="closeLogin()">×</button>
+    <h2 id="auth-title">다시 만나서 반가워요</h2>
+    <p class="asub" id="auth-sub">이메일과 비밀번호로 로그인하세요</p>
+    <label for="auth-email">이메일</label>
+    <input id="auth-email" type="email" placeholder="you@example.com" autocomplete="email">
+    <label for="auth-pw">비밀번호</label>
+    <input id="auth-pw" type="password" placeholder="6자 이상" autocomplete="current-password" onkeydown="if(event.key==='Enter')submitAuth()">
+    <label class="auth-consent" id="auth-consent-row" style="display:none">
+      <input type="checkbox" id="auth-consent">
+      <span>학습 데이터와 일지가 기기 간 동기화를 위해 저장되며, 서비스 관리자가 코칭·지원 목적으로 열람할 수 있음에 동의합니다.</span>
+    </label>
+    <button class="ago" id="auth-go" onclick="submitAuth()">로그인</button>
+    <p class="auth-toggle" id="auth-toggle">처음이세요? <button onclick="toggleAuthMode()">회원가입</button></p>
+    <p class="auth-msg" id="auth-msg"></p>
+  </div>
+</div>
 </body>
 </html>
