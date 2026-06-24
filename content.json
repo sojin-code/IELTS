@@ -1,5 +1,5 @@
 {
-  "meta": { "startDate": "2026-06-20", "examDate": null, "targetBand": 7.0, "lastUpdated": "2026-06-20" },
+  "meta": { "startDate": "2026-06-20", "examDate": null, "targetBand": 7.0, "lastUpdated": "2026-06-24" },
   "phases": [
     { "weeks": [1, 8],   "name": "기초 공사",    "target": "5.5→6.0" },
     { "weeks": [9, 16],  "name": "전략 장착",    "target": "6.0→6.5" },
@@ -132,6 +132,191 @@
         ] },
       "speaking": { "part": "p2", "q": "Describe a memorable journey you have taken. You should say: where you went, who you went with, and what you did during the journey; and explain why it was so memorable. You have one minute to prepare, then speak for two minutes." },
       "writing": { "task": "t2", "minWords": 250, "minutes": 40, "q": "Some people think that governments should spend money on public services such as health and education rather than on the arts, such as music and theatre. To what extent do you agree or disagree? Write at least 250 words." }
+    },
+    { "day": 6,
+      "reading": { "title": "The Origins of Writing", "minutes": 20,
+        "passage": "Writing is one of humanity's most powerful inventions, yet it appeared surprisingly late in our history. For tens of thousands of years, people relied entirely on speech and memory to pass on knowledge. The earliest known writing systems emerged only about five thousand years ago, in a small number of ancient societies.\n\nMany scholars believe that writing was first developed not for literature or for recording stories, but for far more practical reasons. In ancient Mesopotamia, for example, the first written symbols seem to have been used to keep track of trade: how much grain had been stored, or how many animals a person owned. Only later did writing come to be used for laws, religion and poetry.\n\nDifferent cultures invented writing independently. The systems of ancient Egypt, China and Central America developed separately, each with its own unique set of symbols. This suggests that writing was not a single accident but something that human societies tend to create once they reach a certain level of complexity.\n\nThe spread of writing had enormous consequences. It allowed information to be stored accurately and passed across great distances and long periods of time. A message could now outlive the person who wrote it. Some thinkers have argued that without writing, the large, organised states of the ancient world could never have existed, because rulers would have had no reliable way to manage taxes, armies and trade.",
+        "questions": [
+          { "type": "tfng", "q": "Writing appeared early in human history.", "a": "FALSE" },
+          { "type": "tfng", "q": "The earliest known writing systems are about five thousand years old.", "a": "TRUE" },
+          { "type": "tfng", "q": "Most scholars believe writing was first used mainly for poetry and stories.", "a": "FALSE" },
+          { "type": "gap", "q": "In Mesopotamia, the first written symbols were used to keep track of ________.", "a": ["trade"] },
+          { "type": "tfng", "q": "The writing systems of Egypt, China and Central America were copied from one another.", "a": "FALSE" },
+          { "type": "mcq", "q": "What does the independent invention of writing in different cultures suggest?", "options": ["writing was a single accident", "societies tend to create writing once they reach a certain complexity", "only one culture was ever able to write", "writing spread outward from Egypt"], "a": "B" },
+          { "type": "gap", "q": "Writing allowed a message to ________ the person who wrote it.", "a": ["outlive"] }
+        ] },
+      "listening": { "title": "Gym Membership Enquiry", "accent": "en-GB", "rate": 0.95,
+        "script": "RECEPTIONIST: Good afternoon, City Fitness, how can I help?\nCALLER: Hi, I'd like to ask about joining the gym.\nRECEPTIONIST: Of course. We have two memberships. The standard plan is twenty-five pounds a month and gives you access to the gym floor. The premium plan is forty pounds a month and includes all the classes as well.\nCALLER: What kind of classes do you offer?\nRECEPTIONIST: We have yoga, swimming and cycling classes. The most popular one is yoga on Tuesday evenings.\nCALLER: Is there a joining fee?\nRECEPTIONIST: There's a one-off fee of ten pounds, but it's free if you join before the end of the month.\nCALLER: Great, I'll join now then. And what are the opening hours?\nRECEPTIONIST: We're open from six in the morning until ten at night on weekdays, and eight to six at weekends.\nCALLER: Could I book a tour for tomorrow?\nRECEPTIONIST: Certainly. Please bring a photo ID when you come.",
+        "questions": [
+          { "type": "gap", "q": "The standard plan costs £________ a month.", "a": ["25", "twenty-five"] },
+          { "type": "mcq", "q": "What does the premium plan include that the standard plan does not?", "options": ["access to the gym floor", "all the classes", "a personal trainer", "free parking"], "a": "B" },
+          { "type": "gap", "q": "The most popular class is ________ on Tuesday evenings.", "a": ["yoga"] },
+          { "type": "gap", "q": "The joining fee is normally £________.", "a": ["10", "ten"] },
+          { "type": "gap", "q": "On weekdays the gym opens at ________ in the morning.", "a": ["6", "six"] },
+          { "type": "gap", "q": "Customers should bring a photo ________ when they visit.", "a": ["ID", "id", "identification"] }
+        ] },
+      "speaking": { "part": "p1", "q": "Let's talk about reading. Do you enjoy reading books, and what kind of books do you prefer? Has your reading changed since you were a child?" },
+      "writing": { "task": "t1", "minWords": 150, "minutes": 20, "q": "The table below shows the number of books (in thousands) borrowed from a city library in four categories in 2010 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.\n\nDATA (books borrowed, in thousands):\n- Fiction — 2010: 120, 2020: 95\n- Children's — 2010: 80, 2020: 110\n- Non-fiction — 2010: 60, 2020: 70\n- E-books — 2010: 10, 2020: 90" },
+      "vocab": [
+        { "word": "invention", "pos": "n", "meaning_ko": "발명(품)", "example": "Writing is a powerful invention.", "synonyms": ["creation", "innovation"] },
+        { "word": "rely on", "pos": "phrase", "meaning_ko": "~에 의존하다", "example": "People relied on memory to pass on knowledge.", "synonyms": ["depend on", "count on"] },
+        { "word": "emerge", "pos": "v", "meaning_ko": "나타나다", "example": "Writing systems emerged five thousand years ago.", "synonyms": ["appear", "arise", "surface"] },
+        { "word": "practical", "pos": "adj", "meaning_ko": "실용적인", "example": "Writing began for practical reasons.", "synonyms": ["useful", "functional", "pragmatic"] },
+        { "word": "keep track of", "pos": "phrase", "meaning_ko": "기록·추적하다", "example": "Symbols kept track of grain and animals.", "synonyms": ["monitor", "record", "follow"] },
+        { "word": "independently", "pos": "adv", "meaning_ko": "독립적으로", "example": "Cultures invented writing independently.", "synonyms": ["separately", "autonomously"] },
+        { "word": "complexity", "pos": "n", "meaning_ko": "복잡성", "example": "A society reaches a certain complexity.", "synonyms": ["intricacy", "sophistication"] },
+        { "word": "consequence", "pos": "n", "meaning_ko": "결과", "example": "Writing had enormous consequences.", "synonyms": ["result", "outcome", "effect"] },
+        { "word": "accurately", "pos": "adv", "meaning_ko": "정확하게", "example": "Information could be stored accurately.", "synonyms": ["precisely", "correctly"] },
+        { "word": "outlive", "pos": "v", "meaning_ko": "~보다 오래 남다", "example": "A message can outlive its writer.", "synonyms": ["outlast", "survive"] }
+      ]
+    },
+    { "day": 7,
+      "reading": { "title": "The Benefits of Bilingualism", "minutes": 20,
+        "passage": "For much of the twentieth century, many people believed that growing up with two languages might confuse a child and slow down their development. Today, research paints a very different picture. Far from being a disadvantage, being bilingual appears to bring a range of mental benefits.\n\nOne of the most studied advantages concerns what psychologists call executive function — the brain's ability to plan, focus attention and switch between tasks. Because bilingual people constantly choose between two languages and suppress the one they are not using, their brains get a kind of regular exercise. Several studies suggest that this can lead to better concentration and mental flexibility.\n\nThere may also be benefits later in life. Some research has found that bilingual adults show the symptoms of certain age-related memory conditions several years later than people who speak only one language. Scientists stress that being bilingual does not prevent such conditions, but it may help the brain cope with them for longer.\n\nNot all researchers agree on the size of these effects, and some earlier findings have been difficult to repeat. Nevertheless, there is wide agreement that learning and using more than one language is valuable. Beyond any mental benefits, speaking another language allows people to communicate with more of the world and to understand other cultures more deeply.",
+        "questions": [
+          { "type": "tfng", "q": "In the past, some people thought two languages might confuse a child.", "a": "TRUE" },
+          { "type": "tfng", "q": "Modern research supports the old view that bilingualism slows development.", "a": "FALSE" },
+          { "type": "gap", "q": "Bilingual people must constantly ________ the language they are not using.", "a": ["suppress"] },
+          { "type": "mcq", "q": "What is 'executive function'?", "options": ["the ability to speak two languages", "the brain's ability to plan, focus and switch tasks", "an age-related memory condition", "a type of culture"], "a": "B" },
+          { "type": "tfng", "q": "Being bilingual completely prevents age-related memory conditions.", "a": "FALSE" },
+          { "type": "tfng", "q": "All researchers agree on exactly how large the benefits are.", "a": "FALSE" },
+          { "type": "gap", "q": "Speaking another language helps people understand other ________ more deeply.", "a": ["cultures", "culture"] }
+        ] },
+      "listening": { "title": "Welcome to the University Library", "accent": "en-AU", "rate": 0.95,
+        "script": "Hello and welcome to the university library. Let me quickly explain how things work. The library has four floors. The ground floor is where you'll find the help desk and the photocopiers. The first floor is for newspapers and magazines, and it's also our designated quiet zone, so please don't talk on that floor.\n\nMost of the academic books are kept on the second floor, arranged by subject. If you can't find what you need, the staff will be happy to help. The top floor has group study rooms, which you can book online for up to two hours at a time.\n\nAs a student, you can borrow up to ten books at once, and you can keep them for three weeks. If you return a book late, there's a small fine of twenty pence per day. One last thing: the library closes at midnight during term time, but at weekends it closes earlier, at nine in the evening. Please make sure you take all your belongings with you when you leave.",
+        "questions": [
+          { "type": "gap", "q": "The help desk is on the ________ floor.", "a": ["ground"] },
+          { "type": "gap", "q": "The first floor is a designated ________ zone.", "a": ["quiet"] },
+          { "type": "gap", "q": "Academic books on the second floor are arranged by ________.", "a": ["subject"] },
+          { "type": "gap", "q": "Students can borrow up to ________ books at once.", "a": ["10", "ten"] },
+          { "type": "gap", "q": "The late fine is ________ pence per day.", "a": ["20", "twenty"] },
+          { "type": "mcq", "q": "When does the library close at weekends?", "options": ["at midnight", "at nine in the evening", "at five o'clock", "it does not close"], "a": "B" }
+        ] },
+      "speaking": { "part": "p2", "q": "Describe a book you have read that you found useful. You should say: what the book was, why you read it, and what you learned from it; and explain why you found it useful. You have one minute to prepare, then speak for two minutes." },
+      "writing": { "task": "t2", "minWords": 250, "minutes": 40, "q": "Some people think the best way to learn a new language is to live in a country where it is spoken. Others believe it can be learned just as well at home. Discuss both views and give your own opinion. Write at least 250 words." },
+      "vocab": [
+        { "word": "bilingual", "pos": "adj", "meaning_ko": "이중언어를 쓰는", "example": "Bilingual children switch between two languages.", "synonyms": ["two-language", "dual-language"] },
+        { "word": "disadvantage", "pos": "n", "meaning_ko": "불리한 점", "example": "It was once seen as a disadvantage.", "synonyms": ["drawback", "downside", "handicap"] },
+        { "word": "suppress", "pos": "v", "meaning_ko": "억제하다", "example": "They suppress the language they are not using.", "synonyms": ["hold back", "inhibit", "restrain"] },
+        { "word": "flexibility", "pos": "n", "meaning_ko": "유연성", "example": "Bilingualism may improve mental flexibility.", "synonyms": ["adaptability", "versatility"] },
+        { "word": "symptom", "pos": "n", "meaning_ko": "증상", "example": "Symptoms may appear several years later.", "synonyms": ["sign", "indication"] },
+        { "word": "cope with", "pos": "phrase", "meaning_ko": "대처하다", "example": "The brain copes with the condition for longer.", "synonyms": ["deal with", "handle", "manage"] },
+        { "word": "cognitive", "pos": "adj", "meaning_ko": "인지의", "example": "There may be cognitive benefits.", "synonyms": ["mental", "intellectual"] },
+        { "word": "nevertheless", "pos": "adv", "meaning_ko": "그럼에도 불구하고", "example": "Nevertheless, learning a language is valuable.", "synonyms": ["nonetheless", "even so", "still"] },
+        { "word": "valuable", "pos": "adj", "meaning_ko": "가치 있는", "example": "Using more than one language is valuable.", "synonyms": ["worthwhile", "beneficial", "useful"] },
+        { "word": "deeply", "pos": "adv", "meaning_ko": "깊이", "example": "You understand other cultures more deeply.", "synonyms": ["profoundly", "thoroughly"] }
+      ]
+    },
+    { "day": 8,
+      "reading": { "title": "How Coral Reefs Survive", "minutes": 20,
+        "passage": "Coral reefs are often described as the rainforests of the sea. Although they cover only a tiny fraction of the ocean floor, they are home to a remarkable share of all marine species. The structure of a reef is built by tiny animals called coral polyps, which produce hard skeletons of calcium carbonate over thousands of years.\n\nWhat makes corals especially interesting is their close relationship with tiny algae that live inside their tissues. The algae use sunlight to produce food, much of which they share with the coral. In return, the coral provides the algae with shelter and the chemicals they need. This partnership is so important that without it most corals could not survive.\n\nUnfortunately, this relationship is also fragile. When the water becomes too warm, the corals expel the algae living inside them, turning white in a process known as bleaching. A bleached coral is not yet dead, but if the warm conditions continue for too long, it will starve. Rising ocean temperatures have already caused severe bleaching events in reefs around the world.\n\nScientists are now searching for ways to protect reefs, from breeding corals that can tolerate warmer water to creating protected areas where fishing is limited. Many experts warn, however, that the most important step is to slow the warming of the oceans itself, since local efforts alone cannot save reefs if the seas keep heating up.",
+        "questions": [
+          { "type": "tfng", "q": "Coral reefs cover a large fraction of the ocean floor.", "a": "FALSE" },
+          { "type": "gap", "q": "Reefs are built by tiny animals called coral ________.", "a": ["polyps", "polyp"] },
+          { "type": "tfng", "q": "Both the algae and the coral benefit from their relationship.", "a": "TRUE" },
+          { "type": "gap", "q": "When water is too warm, corals expel their algae and turn white in a process called ________.", "a": ["bleaching"] },
+          { "type": "tfng", "q": "A coral dies immediately as soon as it bleaches.", "a": "FALSE" },
+          { "type": "mcq", "q": "What do many experts say is the most important step to protect reefs?", "options": ["breeding tougher corals", "creating protected areas", "slowing the warming of the oceans", "stopping all fishing"], "a": "C" },
+          { "type": "tfng", "q": "Local efforts alone are enough to save reefs.", "a": "FALSE" }
+        ] },
+      "listening": { "title": "Choosing a Research Topic", "accent": "en-US", "rate": 0.95,
+        "script": "TUTOR: So, have you decided on a topic for your project yet?\nSTUDENT: I'm still not sure. I'm interested in renewable energy, but it feels too broad.\nTUTOR: That's a good instinct. A common mistake is choosing a topic that's far too wide. You'll get a much better result if you narrow it down.\nSTUDENT: Maybe I could focus just on solar power?\nTUTOR: Better, but still quite large. What about looking at how solar power is used in one particular city or country?\nSTUDENT: That's a good idea. I could compare two cities.\nTUTOR: Exactly. Comparisons often make strong projects. Now, how will you collect your information?\nSTUDENT: Mostly from journal articles and government reports, I think.\nTUTOR: Good. Just remember to keep a careful record of your sources as you go. Students often lose marks simply because they forget where they found something.\nSTUDENT: I'll make a note of everything. When is the first draft due?\nTUTOR: In four weeks. Send me an outline before then if you'd like feedback.",
+        "questions": [
+          { "type": "mcq", "q": "What does the tutor say is a common mistake?", "options": ["choosing a topic that is too narrow", "choosing a topic that is too wide", "using too many sources", "starting the project too early"], "a": "B" },
+          { "type": "gap", "q": "The student decides to compare two ________.", "a": ["cities", "city"] },
+          { "type": "gap", "q": "Information will come from journal articles and government ________.", "a": ["reports", "report"] },
+          { "type": "gap", "q": "The tutor says students often lose marks because they forget their ________.", "a": ["sources", "source"] },
+          { "type": "gap", "q": "The first draft is due in ________ weeks.", "a": ["4", "four"] },
+          { "type": "tfng", "q": "The tutor offers to give feedback on an outline.", "a": "TRUE" }
+        ] },
+      "speaking": { "part": "p3", "q": "We've been talking about the environment. Some people believe protecting nature is mainly the responsibility of governments, while others think individuals must act too. What do you think, and what can ordinary people realistically do? Develop your answer with reasons and examples." },
+      "writing": { "task": "t1", "minWords": 150, "minutes": 20, "q": "The graph below shows the average monthly temperature (in °C) in two cities, Cityville and Townton, at four points across one year. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.\n\nDATA (average temperature, °C):\n- Cityville — January: 4, April: 12, July: 22, October: 13\n- Townton — January: -2, April: 9, July: 25, October: 10" },
+      "vocab": [
+        { "word": "fraction", "pos": "n", "meaning_ko": "일부, 부분", "example": "Reefs cover a tiny fraction of the sea floor.", "synonyms": ["portion", "part", "segment"] },
+        { "word": "remarkable", "pos": "adj", "meaning_ko": "놀라운", "example": "They host a remarkable share of species.", "synonyms": ["striking", "notable", "extraordinary"] },
+        { "word": "shelter", "pos": "n", "meaning_ko": "은신처, 보호", "example": "The coral provides shelter for the algae.", "synonyms": ["refuge", "protection", "cover"] },
+        { "word": "fragile", "pos": "adj", "meaning_ko": "취약한", "example": "The relationship is also fragile.", "synonyms": ["delicate", "vulnerable", "frail"] },
+        { "word": "expel", "pos": "v", "meaning_ko": "내보내다", "example": "Warm water makes corals expel their algae.", "synonyms": ["eject", "discharge", "force out"] },
+        { "word": "tolerate", "pos": "v", "meaning_ko": "견디다", "example": "Some corals can tolerate warmer water.", "synonyms": ["withstand", "endure", "put up with"] },
+        { "word": "severe", "pos": "adj", "meaning_ko": "심각한", "example": "There have been severe bleaching events.", "synonyms": ["serious", "intense", "harsh"] },
+        { "word": "starve", "pos": "v", "meaning_ko": "굶주리다", "example": "A bleached coral may eventually starve.", "synonyms": ["go hungry", "be deprived"] },
+        { "word": "breed", "pos": "v", "meaning_ko": "(생물을) 기르다, 번식시키다", "example": "Scientists breed corals that tolerate heat.", "synonyms": ["raise", "cultivate"] },
+        { "word": "limited", "pos": "adj", "meaning_ko": "제한된", "example": "Fishing is limited in protected areas.", "synonyms": ["restricted", "capped", "controlled"] }
+      ]
+    },
+    { "day": 9,
+      "reading": { "title": "The Story of Coffee Houses", "minutes": 20,
+        "passage": "Today coffee is enjoyed all over the world, but the social spaces built around it have a long and surprising history. The first coffee houses appeared in the Middle East several centuries ago, and they quickly became popular places for people to meet, talk and exchange news.\n\nWhen coffee houses spread to Europe in the seventeenth century, they had a similar effect. In cities such as London, they became known as places where people from different backgrounds could sit together and discuss the issues of the day. For the price of a single cup, a customer could read the latest newspapers and join in lively conversation. Some coffee houses became so closely linked with particular trades or interests that merchants and writers would gather at the same one again and again.\n\nNot everyone approved. Some rulers worried that these gatherings encouraged dangerous political discussion, and there were occasional attempts to close them down. Such efforts rarely succeeded for long, however, because coffee houses had become too popular and too useful.\n\nIn many ways, the early coffee house played a role that we might now associate with the internet: it was a place to share information rapidly, to debate, and to do business. While the coffee houses of the past have largely disappeared in their original form, the idea of the café as a centre of social life has never gone away.",
+        "questions": [
+          { "type": "tfng", "q": "The first coffee houses appeared in Europe.", "a": "FALSE" },
+          { "type": "gap", "q": "Coffee houses spread to Europe in the ________ century.", "a": ["seventeenth", "17th"] },
+          { "type": "tfng", "q": "In London, coffee houses brought together people from different backgrounds.", "a": "TRUE" },
+          { "type": "mcq", "q": "Why did some rulers want to close coffee houses?", "options": ["the coffee was too expensive", "they worried about dangerous political discussion", "the coffee was unhealthy", "they were too quiet"], "a": "B" },
+          { "type": "tfng", "q": "Attempts to close coffee houses usually succeeded in the long term.", "a": "FALSE" },
+          { "type": "gap", "q": "The writer compares the early coffee house to the modern ________.", "a": ["internet"] },
+          { "type": "tfng", "q": "The idea of the café as a social centre has disappeared completely.", "a": "FALSE" }
+        ] },
+      "listening": { "title": "Reporting a Lost Item", "accent": "en-GB", "rate": 0.95,
+        "script": "STAFF: Hello, lost property office. How can I help?\nCALLER: Hi, I think I left my bag on the train this morning.\nSTAFF: I'm sorry to hear that. Let me take some details. Can you describe the bag?\nCALLER: It's a medium-sized backpack, dark blue, with a side pocket.\nSTAFF: And what was inside it?\nCALLER: A laptop, a notebook, and an umbrella.\nSTAFF: Which train were you on?\nCALLER: The eight fifteen from Riverton to Capeton.\nSTAFF: Thank you. And can I take your name?\nCALLER: It's Daniel Frost.\nSTAFF: Lovely. If we find it, we'll call you. You can also collect lost items from our office, which is open from nine to five.\nCALLER: How long do you keep things for?\nSTAFF: We hold lost property for one month before donating it to charity.\nCALLER: Okay, thank you very much for your help.",
+        "questions": [
+          { "type": "gap", "q": "The lost bag is a dark blue ________.", "a": ["backpack"] },
+          { "type": "gap", "q": "Inside the bag were a laptop, a notebook and an ________.", "a": ["umbrella"] },
+          { "type": "gap", "q": "The train the caller took left Riverton at ________.", "a": ["8:15", "eight fifteen", "8.15"] },
+          { "type": "gap", "q": "The caller's surname is ________.", "a": ["Frost"] },
+          { "type": "gap", "q": "The office is open from nine to ________.", "a": ["5", "five"] },
+          { "type": "gap", "q": "Lost property is kept for one ________ before being donated.", "a": ["month"] }
+        ] },
+      "speaking": { "part": "p1", "q": "Let's talk about drinks. What do you usually drink during the day? Do you prefer tea, coffee, or something else, and why?" },
+      "writing": { "task": "t2", "minWords": 250, "minutes": 40, "q": "Some people believe that social media has had a mostly positive effect on society, while others think it has done more harm than good. Discuss both views and give your own opinion. Write at least 250 words." },
+      "vocab": [
+        { "word": "exchange", "pos": "v", "meaning_ko": "교환하다", "example": "People met to exchange news.", "synonyms": ["swap", "trade", "share"] },
+        { "word": "background", "pos": "n", "meaning_ko": "배경", "example": "People from different backgrounds met there.", "synonyms": ["origin", "upbringing"] },
+        { "word": "lively", "pos": "adj", "meaning_ko": "활기찬", "example": "They joined in lively conversation.", "synonyms": ["animated", "energetic", "spirited"] },
+        { "word": "merchant", "pos": "n", "meaning_ko": "상인", "example": "Merchants gathered at the same coffee house.", "synonyms": ["trader", "dealer"] },
+        { "word": "approve", "pos": "v", "meaning_ko": "찬성하다", "example": "Not everyone approved of the gatherings.", "synonyms": ["endorse", "support", "accept"] },
+        { "word": "gathering", "pos": "n", "meaning_ko": "모임", "example": "Rulers worried about these gatherings.", "synonyms": ["meeting", "assembly", "get-together"] },
+        { "word": "rapidly", "pos": "adv", "meaning_ko": "빠르게", "example": "Information was shared rapidly.", "synonyms": ["quickly", "swiftly", "fast"] },
+        { "word": "debate", "pos": "v", "meaning_ko": "토론하다", "example": "It was a place to debate ideas.", "synonyms": ["discuss", "argue", "dispute"] },
+        { "word": "associate with", "pos": "phrase", "meaning_ko": "~와 연관 짓다", "example": "We associate this role with the internet.", "synonyms": ["link with", "connect with"] },
+        { "word": "disappear", "pos": "v", "meaning_ko": "사라지다", "example": "The old coffee houses have disappeared.", "synonyms": ["vanish", "fade away"] }
+      ]
+    },
+    { "day": 10,
+      "reading": { "title": "Why We Yawn", "minutes": 20,
+        "passage": "Almost everyone yawns, and so do many animals, yet scientists still do not fully agree on why we do it. A yawn involves opening the mouth wide, taking a long breath, and then breathing out. It seems simple, but explaining its purpose has proved surprisingly difficult.\n\nFor many years, the most popular idea was that yawning increases the amount of oxygen in the blood. According to this theory, we yawn when we are tired or bored because our breathing has become shallow. However, careful experiments have cast doubt on this explanation, since giving people extra oxygen does not appear to stop them yawning.\n\nA more recent theory suggests that yawning helps to cool the brain. When we yawn, the deep breath and the stretching of the jaw may increase blood flow and bring in cooler air, lowering the temperature of the brain slightly. Some studies have found that people yawn more in warm conditions than in cold ones, which seems to support this idea.\n\nThere is also the curious fact that yawning is contagious. Seeing, hearing, or even reading about yawning can make us yawn. Many scientists think this is connected to empathy — our tendency to share the feelings and behaviour of others. Whatever the true explanation, yawning remains a small everyday mystery that reminds us how much we still have to learn about the human body.",
+        "questions": [
+          { "type": "tfng", "q": "Scientists completely agree on why people yawn.", "a": "FALSE" },
+          { "type": "gap", "q": "The older theory said yawning increases the amount of ________ in the blood.", "a": ["oxygen"] },
+          { "type": "tfng", "q": "Experiments showed that giving people extra oxygen stops them yawning.", "a": "FALSE" },
+          { "type": "mcq", "q": "What does the more recent theory suggest yawning does?", "options": ["increases oxygen in the blood", "helps to cool the brain", "improves eyesight", "strengthens the jaw"], "a": "B" },
+          { "type": "tfng", "q": "People appear to yawn more in warm conditions than in cold ones.", "a": "TRUE" },
+          { "type": "gap", "q": "Many scientists link contagious yawning to ________.", "a": ["empathy"] },
+          { "type": "gap", "q": "Even ________ about yawning can make us yawn.", "a": ["reading"] }
+        ] },
+      "listening": { "title": "Introduction to Recycling", "accent": "en-GB", "rate": 0.95,
+        "script": "Good morning. In this short talk I'll introduce how a typical recycling system works. When you put items into a recycling bin, they don't simply turn into new products by magic. The first stage is collection, when trucks take the materials to a sorting centre.\n\nAt the sorting centre, the mixed materials are separated. Some of this is done by machines, which use magnets to pull out metal and jets of air to separate light materials like paper. The rest is often sorted by hand. Once separated, each type of material is cleaned and pressed into large blocks called bales.\n\nThese bales are then sold to factories, where they are turned into raw material for new products. For example, recycled glass can be melted down and made into new bottles again and again without losing quality. Paper, on the other hand, can only be recycled a limited number of times, because the fibres become shorter and weaker each time. In the next lecture, we'll look at what happens to plastic in more detail.",
+        "questions": [
+          { "type": "gap", "q": "The first stage of recycling is ________.", "a": ["collection"] },
+          { "type": "gap", "q": "At the sorting centre, machines use ________ to pull out metal.", "a": ["magnets", "magnet"] },
+          { "type": "gap", "q": "Separated materials are pressed into large blocks called ________.", "a": ["bales", "bale"] },
+          { "type": "mcq", "q": "What does the speaker say about recycled glass?", "options": ["it loses quality each time", "it can be made into new bottles again and again", "it cannot be recycled", "it is sorted only by hand"], "a": "B" },
+          { "type": "tfng", "q": "Paper can be recycled an unlimited number of times.", "a": "FALSE" },
+          { "type": "gap", "q": "The next lecture will focus on ________.", "a": ["plastic"] }
+        ] },
+      "speaking": { "part": "p2", "q": "Describe a useful object in your home. You should say: what it is, how you got it, and how often you use it; and explain why it is so useful. You have one minute to prepare, then speak for two minutes." },
+      "writing": { "task": "t1", "minWords": 150, "minutes": 20, "q": "The table below shows the percentage of household waste that was recycled in three towns in 2005, 2012 and 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.\n\nDATA (% of waste recycled):\n- Town A — 2005: 18%, 2012: 35%, 2019: 52%\n- Town B — 2005: 25%, 2012: 30%, 2019: 41%\n- Town C — 2005: 12%, 2012: 28%, 2019: 60%" },
+      "vocab": [
+        { "word": "yawn", "pos": "v", "meaning_ko": "하품하다", "example": "We yawn when we are tired.", "synonyms": ["gape"] },
+        { "word": "shallow", "pos": "adj", "meaning_ko": "얕은", "example": "Our breathing becomes shallow when bored.", "synonyms": ["light", "superficial"] },
+        { "word": "cast doubt on", "pos": "phrase", "meaning_ko": "~을 의심하게 하다", "example": "Experiments cast doubt on the theory.", "synonyms": ["question", "challenge", "undermine"] },
+        { "word": "recent", "pos": "adj", "meaning_ko": "최근의", "example": "A more recent theory exists.", "synonyms": ["latest", "new"] },
+        { "word": "slightly", "pos": "adv", "meaning_ko": "약간", "example": "It lowers the temperature slightly.", "synonyms": ["marginally", "a little"] },
+        { "word": "contagious", "pos": "adj", "meaning_ko": "전염되는", "example": "Yawning is contagious.", "synonyms": ["catching", "infectious"] },
+        { "word": "tendency", "pos": "n", "meaning_ko": "경향", "example": "Empathy is our tendency to share feelings.", "synonyms": ["inclination", "habit", "propensity"] },
+        { "word": "separate", "pos": "v", "meaning_ko": "분리하다", "example": "The materials are separated at the centre.", "synonyms": ["divide", "sort", "split"] },
+        { "word": "raw material", "pos": "phrase", "meaning_ko": "원자재", "example": "Bales become raw material for products.", "synonyms": ["base material", "feedstock"] },
+        { "word": "fibre", "pos": "n", "meaning_ko": "섬유", "example": "Paper fibres become shorter each time.", "synonyms": ["thread", "strand"] }
+      ]
     }
   ],
   "pools": {
